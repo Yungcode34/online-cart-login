@@ -1,0 +1,21 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-mongoose",
+      "settings": {
+        "client": "mongo",
+        "host": "ds141043.mlab.com",
+        "srv": false,
+        "port": "41043",
+        "database": "unidos",
+        "username": "Admin",
+        "password": "Unidos14"
+      },
+      "options": {
+        "authenticationDatabase": "unidos",
+        "ssl": false
+      }
+    }
+  }
+}

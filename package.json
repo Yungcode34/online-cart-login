@@ -1,0 +1,23 @@
+{
+  "name": "online-catering-order-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alewdy/Online-Catering-Order-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alewdy/Online-Catering-Order-App/issues"
+  },
+  "homepage": "https://github.com/alewdy/Online-Catering-Order-App#readme",
+  "dependencies": {
+    "react-bootstrap": "^0.32.4",
+    "react-router-dom": "^4.3.1"
+  }
+}

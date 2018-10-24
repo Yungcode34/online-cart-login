@@ -1,0 +1,9 @@
+Navbar.Brand {
+    padding-top: 0%;
+}
+.navbar{
+    background-color: #fff !important;
+}
+.navbar-default{
+    background-image: none;
+}
