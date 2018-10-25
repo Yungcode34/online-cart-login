@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -11,3 +12,7 @@ ReactDOM.render(
     </BrowserRouter>,
     document.getElementById('root'));
     registerServiceWorker();
+
+    if (module.hot) {
+        module.hot.accept();
+      }

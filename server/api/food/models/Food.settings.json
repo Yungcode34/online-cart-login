@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "food",
   "info": {
     "name": "food",
     "description": ""
@@ -22,6 +22,30 @@
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "foodtype": {
+      "model": "foodtype",
+      "via": "foods"
+    },
+    "smallprice": {
+      "default": "",
+      "type": "decimal"
+    },
+    "mediumprice": {
+      "default": "",
+      "type": "decimal"
+    },
+    "largeprice": {
+      "default": "",
+      "type": "decimal"
+    },
+    "unitprice": {
+      "default": "",
+      "type": "decimal"
+    },
+    "weightprice": {
+      "default": "",
+      "type": "decimal"
     }
   }
 }

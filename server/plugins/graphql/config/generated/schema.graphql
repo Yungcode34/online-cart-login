@@ -86,10 +86,52 @@ type Food {
   name: String
   description: String
   image: UploadFile
+  foodtype: Foodtype
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
 }
 
 type FoodAggregator {
   count: Int
+  sum: FoodAggregatorSum
+  avg: FoodAggregatorAvg
+  min: FoodAggregatorMin
+  max: FoodAggregatorMax
+}
+
+type FoodAggregatorAvg {
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
+}
+
+type FoodAggregatorMax {
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
+}
+
+type FoodAggregatorMin {
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
+}
+
+type FoodAggregatorSum {
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
 }
 
 type FoodConnection {
@@ -113,8 +155,23 @@ type FoodConnectionDescription {
   connection: FoodConnection
 }
 
+type FoodConnectionFoodtype {
+  key: ID
+  connection: FoodConnection
+}
+
 type FoodConnectionImage {
   key: ID
+  connection: FoodConnection
+}
+
+type FoodConnectionLargeprice {
+  key: Float
+  connection: FoodConnection
+}
+
+type FoodConnectionMediumprice {
+  key: Float
   connection: FoodConnection
 }
 
@@ -123,8 +180,23 @@ type FoodConnectionName {
   connection: FoodConnection
 }
 
+type FoodConnectionSmallprice {
+  key: Float
+  connection: FoodConnection
+}
+
+type FoodConnectionUnitprice {
+  key: Float
+  connection: FoodConnection
+}
+
 type FoodConnectionUpdatedAt {
   key: DateTime
+  connection: FoodConnection
+}
+
+type FoodConnectionWeightprice {
+  key: Float
   connection: FoodConnection
 }
 
@@ -135,12 +207,24 @@ type FoodGroupBy {
   name: [FoodConnectionName]
   description: [FoodConnectionDescription]
   image: [FoodConnectionImage]
+  foodtype: [FoodConnectionFoodtype]
+  smallprice: [FoodConnectionSmallprice]
+  mediumprice: [FoodConnectionMediumprice]
+  largeprice: [FoodConnectionLargeprice]
+  unitprice: [FoodConnectionUnitprice]
+  weightprice: [FoodConnectionWeightprice]
 }
 
 input FoodInput {
   name: String
   description: String
   image: ID
+  foodtype: ID
+  smallprice: Float
+  mediumprice: Float
+  largeprice: Float
+  unitprice: Float
+  weightprice: Float
 }
 
 type Foodtype {
@@ -150,6 +234,7 @@ type Foodtype {
   name: String
   description: String
   image: UploadFile
+  foods(sort: String, limit: Int, start: Int, where: JSON): [Food]
 }
 
 type FoodtypeAggregator {
@@ -205,6 +290,7 @@ input FoodtypeInput {
   name: String
   description: String
   image: ID
+  foods: [ID]
 }
 
 input InputID {
@@ -216,7 +302,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = Food | createFoodPayload | updateFoodPayload | deleteFoodPayload | FoodConnection | FoodAggregator | FoodGroupBy | FoodConnection_id | FoodConnectionCreatedAt | FoodConnectionUpdatedAt | FoodConnectionName | FoodConnectionDescription | FoodConnectionImage | Foodtype | createFoodtypePayload | updateFoodtypePayload | deleteFoodtypePayload | FoodtypeConnection | FoodtypeAggregator | FoodtypeGroupBy | FoodtypeConnection_id | FoodtypeConnectionCreatedAt | FoodtypeConnectionUpdatedAt | FoodtypeConnectionName | FoodtypeConnectionDescription | FoodtypeConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = Food | createFoodPayload | updateFoodPayload | deleteFoodPayload | FoodConnection | FoodAggregator | FoodAggregatorSum | FoodAggregatorAvg | FoodAggregatorMin | FoodAggregatorMax | FoodGroupBy | FoodConnection_id | FoodConnectionCreatedAt | FoodConnectionUpdatedAt | FoodConnectionName | FoodConnectionDescription | FoodConnectionImage | FoodConnectionFoodtype | FoodConnectionSmallprice | FoodConnectionMediumprice | FoodConnectionLargeprice | FoodConnectionUnitprice | FoodConnectionWeightprice | Foodtype | createFoodtypePayload | updateFoodtypePayload | deleteFoodtypePayload | FoodtypeConnection | FoodtypeAggregator | FoodtypeGroupBy | FoodtypeConnection_id | FoodtypeConnectionCreatedAt | FoodtypeConnectionUpdatedAt | FoodtypeConnectionName | FoodtypeConnectionDescription | FoodtypeConnectionImage | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createFood(input: createFoodInput): createFoodPayload

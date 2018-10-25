@@ -22,6 +22,10 @@
       "via": "related",
       "plugin": "upload",
       "required": false
+    },
+    "foods": {
+      "collection": "food",
+      "via": "foodtype"
     }
   }
 }

@@ -18,7 +18,7 @@ export default class Home extends Component {
     render() {
         return (
             <Grid>
-                <img src={bgImg} alt="bg" class="bg"></img>
+                <img src={bgImg} alt="bg" className="bg"></img>
                 <Jumbotron>
                     <div id="main-content">
                         <h1 className="jumbo-title">Unidos Supermarket Catering</h1>
