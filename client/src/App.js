@@ -9,7 +9,7 @@ import PoincianaCatering from './component/catering/poinciana-cater';
 import Checkout from './component/checkout/checkout';
 import Login from './component/login/login';
 import SignUp from './component/signup/signup';
-import SignIn from './component/signin/signin';
+import SignIn from './component/login/login';
 import Foods from './component/foods/foods'
 import Logo from './component/logo/logo'
 import Navbar from './component/customNav/customNav';
