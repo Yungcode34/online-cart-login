@@ -19,7 +19,9 @@
     "eslint-plugin-react": "^6.8.0"
   },
   "dependencies": {
-    "lodash": "4.x.x",
+    "apollo-server-koa": "^2.1.0",
+    "immutable": "^3.8.2",
+    "lodash": "^4.17.11",
     "strapi": "3.0.0-alpha.14.3",
     "strapi-hook-mongoose": "3.0.0-alpha.14.3"
   },

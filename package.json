@@ -2,11 +2,7 @@
   "name": "online-catering-order-app",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "server.js",
-=======
   "main": "/server/server.js",
->>>>>>> 25c1d9afcbb7e77e90a4cf391fba88dba3a59f16
   "scripts": {
     "start": "node ./server/server.js",
     "heroku-postbuild": "cd client && yarn && yarn run build",

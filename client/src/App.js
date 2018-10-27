@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import Home from './component/home/home';
 import Catering from './component/catering/catering';
 import DeltonaCatering from './component/catering/deltona-cater';
