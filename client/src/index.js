@@ -26,11 +26,6 @@ export const setToken = (value, tokenKey = TOKEN_KEY) => {
         }
     }
     //THIS WILL BE USED WHEN CART IS FINISHED
-    /*export const clearCart = (cartKey = CART_KEY) => {
-        if(localStorage){
-            localStorage.removeItem(cartKey)
-        }
-    }*/
     
 ReactDOM.render(
     <BrowserRouter>

@@ -27,6 +27,10 @@
       "model": "foodtype",
       "via": "foods"
     },
+    "price": {
+      "default": "",
+      "type": "integer"
+    },
     "smallprice": {
       "default": "",
       "type": "decimal"

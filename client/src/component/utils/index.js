@@ -6,12 +6,25 @@ export const calculatePrice = items =>{
         .toFixed(2)}`;
 };
 
+export const calculateAmount = items =>{
+    return Number(items
+        .reduce((acc, item) => acc + item.quantity * item.price, 0)
+        .toFixed(2));
+};
+
 export const setCart = (value, cartKey = CART_KEY) => {
     if(localStorage){
         localStorage.setItem(cartKey, JSON.stringify(value));
 
     }
 }
+
+export const clearCart = (cartKey = CART_KEY) => {
+    if(localStorage){
+        localStorage.removeItem(cartKey)
+    }
+}
+
 export const getCart = (cartKey = CART_KEY) =>{
     if(localStorage && localStorage.getItem(cartKey)){
         return JSON.parse(localStorage.getItem(cartKey));

@@ -53,7 +53,17 @@ module.exports = {
    */
 
   create: async (ctx) => {
-    return strapi.services.orders.add(ctx.request.body);
+    const { address, amount, foods, postalCode, city } = ctx.request.body;
+    const order = await strapi.services.order.add({
+      user: ctx.state.user._id,
+      address,
+      amount,
+      foods,
+      postalCode,
+      city
+    });
+    return order;
+
   },
 
   /**

@@ -31,6 +31,7 @@ class Foods extends React.Component {
                 image {
                   url
                 }
+                price
                 smallprice
                 mediumprice
                 largeprice
@@ -103,18 +104,8 @@ deleteItemFromCart = itemToDeleteId =>{
                                         </Box>
                                         <Box marginBottom={2}>
                                             <Text>{food.description}</Text>
+                                            <Text>${food.price}</Text>
                                         </Box>
-
-                                        <FormGroup controlId="formControlsSelect">
-                                            <FormControl componentClass="select" onChange={this.onChange} placeholder="select">
-                                                <option>Select size</option>
-                                                <option value="small">Small ${food.smallprice}</option>
-                                                <option value="medium">Medium ${food.mediumprice}</option>
-                                                <option value="large">Large ${food.largeprice}</option>
-                                                <option value="unit">Unit ${food.unitprice}</option>
-                                                <option value="weight">Weight ${food.weightprice}</option>
-                                            </FormControl>
-                                        </FormGroup>
 
 
                                         <Text bold size="xl">
@@ -142,7 +133,7 @@ deleteItemFromCart = itemToDeleteId =>{
                                 {cartItems.map(item =>(
                                     <Box key={item._id} display="flex" alignItems="center">
                                     <Text>
-                                        {item.name} x {item.quantity} - ${(item.quatntity * item.smallprice).toFixed(2)}
+                                        {item.name} x {item.quantity} - ${(item.quantity * item.price)}
 
                                     </Text>
                                     <IconButton

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Container, Box, Button, Heading, Text, TextField, Modal, Spinner } from 'gestalt';
 import { Elements , StripeProvider, CardElement, injectStripe} from 'react-stripe-elements'
+import Strapi from 'strapi-sdk-javascript/build/main';
+
+import { getCart, calculatePrice, clearCart, calculateAmount } from '../utils/index';
+const apiUrl = process.env.API_URL || "http://localhost:1337";
+const strapi = new Strapi(apiUrl);
 
 
-import { getCart, calculatePrice } from '../utils/index';
 export default class Checkout extends Component {
     state = {
         cartItems: [],
@@ -11,7 +15,7 @@ export default class Checkout extends Component {
         postalCode: "",
         city: "",
         confirmationEmailAddress: "",
-        orderProcessing: true,
+        orderProcessing: false,
         modal: false
     };
     componentDidMount() {
@@ -34,7 +38,30 @@ export default class Checkout extends Component {
         this.setState({ modal: true })
     };
 
-    handleSubmitOrder = () => {}
+     handleSubmitOrder = async () => {
+        const { cartItems, city, address, postalCode } = this.state
+
+        const amount = calculateAmount(cartItems)
+
+        this.setState({orderProcessing: true})
+
+        try {
+            const response = await strapi.createEntry('orders',{
+                amount,
+                foods: cartItems,
+                city,
+                postalCode,
+                address
+                
+            })
+
+            this.setState({ orderProcessing: false, modal: false})
+            clearCart();
+        } catch (err) {
+            this.setState({ orderProcessing: false, modal: false})
+            console.log(err.message);
+        }
+    }
 
     isFormEmpty = ({ address, postalCode, city, confirmationEmailAddress }) => {
         return !address || !postalCode || !city || !confirmationEmailAddress;
@@ -75,7 +102,7 @@ export default class Checkout extends Component {
                                 {cartItems.map(item => (
                                     <Box key={item._id} padding={1}>
                                         <Text color="midnight">
-                                            {item.name} x {item.quantity} - {item.quantity * item.smallPirce}
+                                            {item.name} x {item.quantity} - ${item.quantity * item.price}
                                         </Text>
 
 
@@ -107,7 +134,7 @@ export default class Checkout extends Component {
                             />
                             <TextField
                                 id="postalCode"
-                                type="number"
+                                type="text"
                                 name="postalCode"
                                 placeholder="Postal Code"
                                 onChange={this.handleChange}
@@ -193,7 +220,7 @@ const ConfirmationModal = ({ orderProcessing, cartItems, closeModal, handleSubmi
                 <Text size="lg" color="red">
                 {item.name} x {item.quantity * item.price}
                 </Text>
-            </Box>
+            </Box> 
         ))}
         <Box paddingY={2}>
             <Text size="lg" bold>
