@@ -2,13 +2,12 @@
 
 This is a fullstack MERN application.
 
-Currently offline due to continuing production and payment processing for real live use.
+Currently offline due to continued production and payment processing for real live use.
 
 A clip running this applcation locally
 
 can be found [here](https://drive.google.com/file/d/18C5Iyg_XC1lMDQ5na22_qm8AZWZf3vg_/view)
 
-if you want to run locally yourself instructions will be down below.
 
 # Technologies invloved
 ###### MONGO
@@ -22,6 +21,10 @@ the applications products, users, aswell as orders.
 
 ###### graphql
 ###### stripe
+
+# going foward
+
+getting payment system confirmed with owners of unidos for live production and deployment.
 
 
 
